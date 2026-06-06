@@ -32,6 +32,11 @@ if (!dataCollection?.required?.includes("none")) {
   throw new Error("Declare no data collection with browser_specific_settings.gecko.data_collection_permissions.required = [\"none\"].");
 }
 
+const minVersion = Number.parseFloat(manifest.browser_specific_settings.gecko.strict_min_version);
+if (!Number.isFinite(minVersion) || minVersion < 142) {
+  throw new Error("strict_min_version must be 142.0 or later while data_collection_permissions is present.");
+}
+
 if (JSON.stringify(manifest).includes("storage.sync")) {
   throw new Error("This extension must not advertise or rely on storage.sync.");
 }

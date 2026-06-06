@@ -42,7 +42,7 @@ This project is therefore not a port forwarder. It is a local-only replacement f
 
 Requirements:
 
-- Firefox 91 or later.
+- Firefox 142 or later.
 - Node.js 18 or later for local tests and packaging.
 
 Run checks:
