@@ -1,0 +1,4 @@
+dist/
+node_modules/
+.web-extension-id
+npm-debug.log*

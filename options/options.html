@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Container Local Proxy</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>Container Local Proxy</h1>
+          <p>为 Firefox 容器身份配置仅保存在本机的代理。</p>
+        </div>
+        <label class="switch">
+          <input id="enabled" type="checkbox">
+          <span>启用</span>
+        </label>
+      </header>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h2>身份代理</h2>
+          <button id="refresh" type="button">刷新容器</button>
+        </div>
+        <div id="identityList" class="list"></div>
+      </section>
+
+      <section class="panel actions">
+        <button id="save" type="button">保存本机配置</button>
+        <button id="export" type="button">导出 JSON</button>
+        <label class="fileButton">
+          导入 JSON
+          <input id="import" type="file" accept="application/json">
+        </label>
+        <span id="status" role="status"></span>
+      </section>
+    </main>
+
+    <template id="identityTemplate">
+      <article class="row identityRow">
+        <div class="identityName">
+          <strong data-field="name"></strong>
+          <span data-field="cookieStoreId"></span>
+        </div>
+        <label>
+          类型
+          <select data-field="type">
+            <option value="socks">SOCKS5</option>
+            <option value="socks4">SOCKS4</option>
+            <option value="http">HTTP</option>
+            <option value="https">HTTPS</option>
+          </select>
+        </label>
+        <label>
+          主机
+          <input data-field="host" type="text" placeholder="127.0.0.1">
+        </label>
+        <label>
+          端口
+          <input data-field="port" type="number" min="1" max="65535" placeholder="1080">
+        </label>
+        <label>
+          用户名
+          <input data-field="username" type="text" autocomplete="off">
+        </label>
+        <label>
+          密码
+          <input data-field="password" type="password" autocomplete="off">
+        </label>
+        <label class="check">
+          <input data-field="proxyDNS" type="checkbox">
+          <span>代理 DNS</span>
+        </label>
+        <label class="check">
+          <input data-field="endpointEnabled" type="checkbox">
+          <span>启用</span>
+        </label>
+      </article>
+    </template>
+
+    <script src="options.js"></script>
+  </body>
+</html>
